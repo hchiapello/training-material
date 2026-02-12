@@ -5,15 +5,15 @@ title: Public dataset construction for bacterial comparative genomics
 zenodo_link: 'https://zenodo.org/records/1'
 draft: true
 questions:
-- How to can a sound bacterial genome dataset be built for a comparative analysis ?
+- How can a sound bacterial genome dataset be built for a comparative analysis ?
 - How can publicly available assemblies be listed, filtered and downloaded in different formats ?
-- How can genome diversity within this dataset be evaluated ?
-- How to perform dereplication on a large dataset, i.e. identify "identitical" genomes and reduce the dataset by selecting the highest quality representative genome in each replicate set?
+- How can the diversity of genomes within this dataset be evaluated ?
+- How can dereplication be performed on a large dataset, i.e. how can "identical" genomes be identified and the dataset reduced by selecting the highest quality representative genome in each replicate set ?
 objectives:
-- Retrieve the publicly available genome assemblies of a bacterial taxon (usually a species or genus)
+- Retrieve publicly available genome assemblies of a bacterial taxon (typically a species or genus)
 - Retrieve the corresponding DNA sequences and annotations in Galaxy
 - Retrieve the metadata associated with these genomes in a table
-- Evaluate the genome diversity of the dataset using rapid pairwise comparisons, and dereplicate the dataset of necessary
+- Evaluate the genome diversity of the dataset using rapid pairwise comparisons, and dereplicate the dataset if necessary
 time_estimation: 1H
 key_points:
 - The **ncbi-dataset** tool simplifies the download of genome data and metadata from the Genbank and RefSeq repositories
@@ -58,22 +58,24 @@ Introduction
 
 # Get basic information about genome assemblies of your favorite bacterial species / genus from the NCBI repository 
 
-Before building a genome dataset we strongly recommend exploring the genome assemblies of your favourite bacterial species/genus that arer available in public databanks (NCBI, ENA). You will generally be interested in comparing your own private genomes to the public ones.
+Before building a genome dataset we strongly recommend exploring the genome assemblies of your favourite bacterial species/genus that are available in public databanks (NCBI, ENA). You will generally be interested in comparing your own private genome assemblies to the public ones.
 
+>
 > <hands-on-title> Get informations on public genomes for your favorite bacteria from NCBI datasets website</hands-on-title>
 >
-> > 1. Retrieve genome information at NCBI using the website [NCBI Datasets](https://www.ncbi.nlm.nih.gov/datasets/)
->    - Go the NCBI datasets web site
+> > **Retrieve information on public genome assemblies at NCBI** 
+>    - Go the NCBI datasets web site [NCBI Datasets](https://www.ncbi.nlm.nih.gov/datasets/)
 >    - Enter the name of you favorite bacteria in the dark blue frame: here we propose *Streptococcus salivarius* 
->    - Look at the resulting web page.
+>    - Look at the resulting web page. 
+
+
 >
->    > <comment-title> The NCBI TaxId </comment-title>
+> <comment-title> The NCBI TaxId </comment-title>
 > 
->     > The **Taxonomy resource** of the National Center for Biotechnology Information (NCBI)  is a curated database of organism names and classifications. It provides links to related data for all taxonomic nodes. It contains organism names and classifications for all sequences in the nucleotide and protein sequence databases of the International Nucleotide Sequence Database Collaboration (INSDC). Each Taxonomy entry or TaxNode includes: a primary name, a number of secondary names and a public stable, unique identifier, the **taxonomy identifier, or TaxId**. Due to the numerous issues with taxonomic nomenclature in bacterial organisms, **we recommend using the TaxId rather than the taxonomic name when building bacterial genomic datasets.** 
->    {: .comment}
+> The **Taxonomy resource** of the National Center for Biotechnology Information (NCBI)  is a curated database of organism names and classifications. It provides links to related data for all taxonomic nodes. It contains organism names and classifications for all sequences in the nucleotide and protein sequence databases of the International Nucleotide Sequence Database Collaboration (INSDC). Each Taxonomy entry or TaxNode includes: a primary name, a number of secondary names and a public stable, unique identifier, the **taxonomy identifier, or TaxId**. Due to the numerous issues with taxonomic nomenclature in bacterial organisms, **we recommend using the TaxId rather than the taxonomic name when building bacterial genomic datasets.** 
+>    
+{: .comment}
 >
->
-{: .hands_on}
 
 {% snippet topics/genome-annotation/faqs/assembly_levels.md %}
 
@@ -89,11 +91,12 @@ Before building a genome dataset we strongly recommend exploring the genome asse
 > > <solution-title>Answers about *S. salivarius* public genomes</solution-title>
 > > 
 > > 1. *S. salivarius* taxonomy id: 1304
-> > 2. 518 public *S. salivarius* genomes (date: 2015/08/22)
+> > 2. 652 public *S. salivarius* genomes (date: 2026/02/12)
 > > 3. *S. salivarius* reference genome accession is GCF_000253315.1
 > >
 > {: .solution}
 >
+{: .hands_on}
 
 > <hands-on-title> Data Retrieval </hands-on-title>
 >
@@ -110,10 +113,10 @@ Before building a genome dataset we strongly recommend exploring the genome asse
 
 # Create a metadata report for a dataset of genome assemblies 
 
-The **NCBI dataset tool** provides tools to retrieve genome assemblies and related metadata separately. Metadata contains key information about sequencing and assembly quality metrics, such as assembly length and coverage, number of contigs, N50 and L50 metrics ; Biosample features, such as organism, strain, isolation source and geographic location; and annotation results, suche as the number of coding and non-coding genes.
-First looking at the metadata allows you to refine the dataset according to different criteria. Then, you can download the genomes on the refined dataset. 
-In this tutorial we propose to use the **taxon id** to download important metadata related to public RefSeq genome assemblies of the S. salivarius species.
-In comparative bacterial genomics, high-quality genomes with verified assemblies and consistent annotations are often needed. Therefore recommend here using *RefSeq rather than Genbank* as the genome resource.
+The **NCBI dataset tool** enables users to retrieve genome assemblies and related metadata separately. The metadata contains key information about sequencing and assembly quality metrics, such as assembly length and coverage, number of contigs, and the N50 and L50 metrics.  It also contains information about Biosample features, such as the organism, strain, isolation source and geographic location, as well as annotation results, such as the number of coding and non-coding genes.
+Looking at the metadata first allows you to refine the dataset according to different criteria. You can then download the genomes from the refined dataset. 
+In this tutorial we will  use the **taxon id** to download important metadata related to public RefSeq genome assemblies of the S. salivarius species.
+In comparative bacterial genomics, high-quality genomes with verified assemblies and consistent annotations are often required. Therefore, we recommend using **RefSeq rather than Genbank** as genome resource.
 
 {% snippet topics/genome-annotation/faqs/refseq_vs_genbank.md %}
 
